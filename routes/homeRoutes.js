@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { logger } = require('sequelize/lib/utils/logger');
-const { Review, User, Comment } = require('../models');
+const { Review, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
         const reviewData = await Review.findAll({
-            include: [{ model: Comment }, { model: User }],
+            include: [{ model: User }],
         });
 
         const reviews = reviewData.map((project) => project.get({ plain: true }));
@@ -24,7 +23,7 @@ router.get('/', async (req, res) => {
 router.get('/review/:id', async (req, res) => {
     try {
         const reviewData = await Review.findByPk(req.params.id, {
-            include: [{ model: Comment}, { model: User }],
+            include: [{ model: User }],
         });
         const review = reviewData.get({ plain: true });
 
