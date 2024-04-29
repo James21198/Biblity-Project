@@ -7,14 +7,14 @@ const createSearchBox = (bookName, bookItem, index) => {
     if (index === 0) {
         return `<div class="details">
                     <h2>${bookName} (${bookItem.title.split(" ")[0]})</h2>
-                    <h4>Author: ${(bookItem.main.author_name - " ")}</h4>
-                    <h4>Published Year: ${bookItem.main.first_publish_year}</h4>
-                    <h4>Isbn: ${bookItem.main.isbn}</h4>
-                </div>
-                <div class="icon">
-                    <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
-                    <h4>${weatherItem.weather[0].description}</h4>
-                </div>`;
+                    <h4>Author: ${(bookItem.author_name - " ")}</h4>
+                    <h4>Published Year: ${bookItem.first_publish_year}</h4>
+                    <h4>Isbn: ${bookItem.isbn}</h4>
+                </div>`
+                //<div class="icon">
+                    // <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
+                    // <h4>${weatherItem.weather[0].description}</h4>
+                 //</div>;
     }
 }
 
