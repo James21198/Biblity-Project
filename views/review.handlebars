@@ -1,10 +1,18 @@
 <div class="text-center">
-    <h2>{{title}}</h2>
+    <h2>{{isbn}}</h2>
     <p>{{body}}</p>
     <p>{{user.name}}: {{format_date createdAt}}</p>
 
+    <form action="/review/{{id}}" method="post">
+        <input type="text" name="isbn" placeholder={{isbn}} value={{isbn}}>
+        <textarea name="body" placeholder="Your Review"></textarea>
+        <button class="btn btn-danger" type="submit">Post review</button>
+    </form> 
     <p>
-        <a href="/" class="btn btn-primary">More Reviews</a>
-        <a href="/" class="btn btn-primary">New Reviews</a>
+        <a href="/" class="btn btn-primary">More Posts</a>
+        <a href="/" class="btn btn-primary">New Post</a>
     </p>
 </div>
+
+
+<script src="js/review.js"></script>

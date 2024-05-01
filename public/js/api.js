@@ -1,56 +1,92 @@
-const BOOK_API_BASE_URL = 'https://openlibrary.org/';
+const BOOK_API_BASE_URL = "https://openlibrary.org/";
 
-const bookInput = document.querySelector (".book-input");
-const searchButton = document.querySelector (".search-btn");
+const bookInput = document.querySelector(".book-input");
+const searchButton = document.querySelector(".search-btn");
 
-const createSearchBox = (bookTitle, bookAuthor, bookPublished, bookIsbn, bookCoverImage, index) => {
-    if (index === 0) {
-        return `<div class="current-search">
-                    <h2>(${bookTitle})</h2>
-                    <h4>Author: ${(bookAuthor - " ")}</h4>
-                    <h4>Published Year: ${bookPublished}</h4>
-                    <h4>Isbn: ${bookIsbn}</h4>
-                </div>
-                <div class="icon">
-                    <img src="http://covers.openlibrary.org/${bookCoverImage.icon}@32x.png" alt="Book-Cover">
-                </div>`;
-    }
+function onClickSearch(event) {
+  const bookName = bookInput.value.trim();
+
+  // Do we have a valid Book name? if not, quit early
+  if (!bookName) return;
+
+  // DIsplay the
+  renderSearchDetails(bookName);
 }
 
-const generateResults = (data) => {
-    data.forEach((bookItem, index) => {
-        const bookTitle = bookItem.title;
-        console.log(bookTitle)
-        const bookAuthor = bookItem.author_name[0];
-        console.log(bookAuthor)
-        const bookPublished = bookItem.first_publish_year;
-        console.log(bookPublished)
-        const bookIsbn = bookItem.isbn[0];
-        console.log(bookIsbn)
-        const bookCoverImage = bookItem.cover_i;
-        console.log(bookCoverImage)
-        createSearchBox(bookTitle, bookAuthor, bookPublished, bookIsbn, bookCoverImage, index);
+const displayStatus = (message) => {
+  const statusEl = document.querySelector("#stutus-bar");
+  statusEl.innerHTML = message;
+
+  // if we have no text to display, hide the status bar
+  if (message === "") {
+    statusEl.style.display = "none";
+  } else {
+    statusEl.style.display = "block";
+  }
+};
+
+const clearSearchResults = () => {
+  // Clear the search results
+  const resultsEl = document.querySelector("#book-search-results");
+  resultsEl.innerHTML = "";
+};
+
+const renderBookResultCard = (book, index) => {
+  const html = `<div class="book-search-card">
+        <div class="book-search-info">
+            <h2>(${book.title})</h2>
+            <h4>Author: ${book.author}</h4>
+            <h4>Published Year: ${book.published}</h4>
+            <h4>Isbn: ${book.isbn}</h4>
+        </div>
+        <div class="book-search-image">
+            <img src="http://covers.openlibrary.org/b/id/${book.coverImage}-M.jpg" alt="Covert art for ${book.title} by ${book.author} published ${book.published}">
+        </div>
+    </div>`;
+
+  // Append the search results to the DOM
+  const resultsEl = document.querySelector("#book-search-results");
+  const div = document.createElement("div");
+
+  div.innerHTML = html;
+  resultsEl.appendChild(div);
+};
+
+const renderBookResults = (data) => {
+  data.forEach((bookItem, index) => {
+    const book = {
+      title: bookItem.title,
+      author: bookItem.author_name[0],
+      published: bookItem.first_publish_year,
+      isbn: bookItem.isbn[0],
+      coverImage: bookItem.cover_i,
+    };
+
+    // Render the indivudal Book Result Card
+    renderBookResultCard(book, index);
+  });
+
+  // Clear the Status Bar
+  displayStatus("");
+};
+
+const renderSearchDetails = (bookName) => {
+  // Show the Loading Status indicator
+  displayStatus("Loading, please wait");
+
+  // clear the search results ready for the new search
+  clearSearchResults();
+
+  // URL Encode the book name so we can handle spaces and special characters
+  const searchTerm = encodeURIComponent(bookName);
+
+  var apiUrl = `${BOOK_API_BASE_URL}search.json?q=${searchTerm}`;
+  fetch(apiUrl)
+    .then((res) => res.json())
+    .then((data) => renderBookResults(data.docs))
+    .catch((e) => {
+      console.warn("Error fetching data from API", e);
     });
-}
+};
 
-const getSearchDetails = (bookName) => {
-    var apiUrl = `${BOOK_API_BASE_URL}search.json?q=${bookName}`
-    fetch(apiUrl)
-        .then(res => res.json())
-        .then(data => 
-        generateResults(data.docs)
-    )
-    .catch (() => {
-        alert("An error has occurred whilst finding this search request!");
-    });
-}
-
-function onClickSearch (event) {
-   
-    const bookName = bookInput.value.trim();
-    
-    if (!bookName) return;
-        getSearchDetails(bookName);
-}
-
-searchButton.addEventListener ("click", onClickSearch);
+searchButton.addEventListener("click", onClickSearch);
