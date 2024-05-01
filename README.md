@@ -12,3 +12,4 @@ fetch(`https://openlibrary.org/search.json?q=${searchText}`)
         .then(data => displayResults(data.docs));
 
 http://covers.openlibrary.org/b/id/$%7Bbook.cover_i%7D-M.jpg 
+
