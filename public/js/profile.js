@@ -1,4 +1,4 @@
-const newFormHandler = async (event) => {
+const newReviewHandler = async (event) => {
     event.preventDefault();
   
     const title = document.querySelector('#review-title').value.trim();
@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const body = document.querySelector('#review-text').value.trim();
   
     if (title && body) {
-      const response = await fetch(`/api/posts`, {
+      const response = await fetch(`/api/review`, {
         method: 'POST',
         body: JSON.stringify({ title, body }),
         headers: {
@@ -26,23 +26,23 @@ const newFormHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
   
-      const response = await fetch(`/api/posts/${id}`, {
+      const response = await fetch(`/api/review/${id}`, {
         method: 'DELETE',
       });
   
       if (response.ok) {
         document.location.replace('/profile');
       } else {
-        alert('Failed to delete post');
+        alert('Failed to delete review');
       }
     }
   };
   
   document
-    .querySelector('.new-post-form')
-    .addEventListener('submit', newFormHandler);
+    .querySelector('.new-review-form')
+    .addEventListener('submit', newReviewHandler);
   
   document
-    .querySelector('.post-list')
+    .querySelector('.review-list')
     .addEventListener('click', delButtonHandler);
   
