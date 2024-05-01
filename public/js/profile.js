@@ -1,9 +1,9 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
   
-    const title = document.querySelector('#post-title').value.trim();
+    const title = document.querySelector('#review-title').value.trim();
    // const needed_funding = document.querySelector('#project-funding').value.trim();
-    const body = document.querySelector('#post-text').value.trim();
+    const body = document.querySelector('#review-text').value.trim();
   
     if (title && body) {
       const response = await fetch(`/api/posts`, {
