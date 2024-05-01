@@ -3,18 +3,17 @@ const BOOK_API_BASE_URL = 'https://openlibrary.org/';
 const bookInput = document.querySelector (".book-input");
 const searchButton = document.querySelector (".search-btn");
 
-const createSearchBox = (bookName, bookItem, index) => {
+const createSearchBox = (bookTitle, bookAuthor, bookPublished, bookIsbn, bookCoverImage, index) => {
     if (index === 0) {
-        return `<div class="details">
-                    <h2>${bookName} (${bookItem.title.split(" ")[0]})</h2>
-                    <h4>Author: ${(bookItem.author_name - " ")}</h4>
-                    <h4>Published Year: ${bookItem.first_publish_year}</h4>
-                    <h4>Isbn: ${bookItem.isbn}</h4>
-                </div>`
-                //<div class="icon">
-                    // <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
-                    // <h4>${weatherItem.weather[0].description}</h4>
-                 //</div>;
+        return `<div class="current-search">
+                    <h2>(${bookTitle})</h2>
+                    <h4>Author: ${(bookAuthor - " ")}</h4>
+                    <h4>Published Year: ${bookPublished}</h4>
+                    <h4>Isbn: ${bookIsbn}</h4>
+                </div>
+                <div class="icon">
+                    <img src="http://covers.openlibrary.org/${bookCoverImage.icon}@32x.png" alt="Book-Cover">
+                </div>`;
     }
 }
 
@@ -30,6 +29,7 @@ const generateResults = (data) => {
         console.log(bookIsbn)
         const bookCoverImage = bookItem.cover_i;
         console.log(bookCoverImage)
+        createSearchBox(bookTitle, bookAuthor, bookPublished, bookIsbn, bookCoverImage, index);
     });
 }
 
