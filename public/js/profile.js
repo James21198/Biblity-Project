@@ -3,7 +3,7 @@ const newFormHandler = async (event) => {
   
     const title = document.querySelector('#post-title').value.trim();
    // const needed_funding = document.querySelector('#project-funding').value.trim();
-    const body = document.querySelector('#post-text').value.trim();
+    const body = document.querySelector('#post-body').value.trim();
   
     if (title && body) {
       const response = await fetch(`/api/posts`, {

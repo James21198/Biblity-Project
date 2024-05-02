@@ -42,6 +42,7 @@ router.get("/", async (req, res) => {
 
 router.get("/review-book/:isbn", async (req, res) => {
   try {
+    console.log('review');
     const isbn = req.params.isbn;
 
     res.render("review", {
@@ -90,7 +91,7 @@ router.get("/profile", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/profile");
+    res.redirect("/review");
     return;
   }
 

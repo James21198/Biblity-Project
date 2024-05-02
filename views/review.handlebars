@@ -3,9 +3,9 @@
     <p>{{body}}</p>
     <p>{{user.name}}: {{format_date createdAt}}</p>
 
-    <form action="/review/{{id}}" method="post">
-        <input type="text" name="isbn" placeholder={{isbn}} value={{isbn}}>
-        <textarea name="body" placeholder="Your Review"></textarea>
+    <form class="addReview-form" action="/review/{{id}}" method="post">
+        <input type="id" name="isbn" placeholder={{isbn}} value={{isbn}}>
+        <textarea name="text" placeholder="Your Review"></textarea>
         <button class="btn btn-danger" type="submit">Post review</button>
     </form> 
     <p>
