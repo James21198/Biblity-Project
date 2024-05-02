@@ -27,25 +27,13 @@
                 {{/if}}
             </nav>
         </header>
-        <main class="'container container-fluid mt-5">
-            <input class="book-input" type="text" placeholder="Search for a book" value = "Harry Potter">
-            <button class="search-btn">Search</button>
-            {{{ body }}}
-            <div class="current-search">
-                    <div class="details">
-                        <h2>______</h2>
-                        <h4>Author: __</h4>
-                        <h4>Published Year: __</h4>
-                        <h4>Isbn: __ </h4>
-                    </div>
-                </div>
-        </main>
-        <footer>
 
-        </footer>
+        {{{ body }}}
     </div>
-    {{#if logged_in}}
+    <footer>
+        Copywrite &copy; 2024
+    </footer>
+
     <script src="js/logout.js"></script>
-    {{/if}}
 </body>
 </html>
