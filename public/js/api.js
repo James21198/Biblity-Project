@@ -32,7 +32,8 @@ const clearSearchResults = () => {
 };
 
 const renderBookResultCard = (book, index) => {
-  const html = `<div class="book-search-card">
+  const html = `<a href="/review/${book.isbn}">
+  <div class="book-search-card">
         <div class="book-search-info">
             <h2>(${book.title})</h2>
             <h4>Author: ${book.author}</h4>
@@ -42,7 +43,7 @@ const renderBookResultCard = (book, index) => {
         <div class="book-search-image">
             <img src="http://covers.openlibrary.org/b/id/${book.coverImage}-M.jpg" alt="Covert art for ${book.title} by ${book.author} published ${book.published}">
         </div>
-    </div>`;
+    </div></a>`;
 
   // Append the search results to the DOM
   const resultsEl = document.querySelector("#book-search-results");

@@ -1,7 +1,7 @@
 <div class="text-center">
     <h2>{{isbn}}</h2>
     <p>{{body}}</p>
-    <p>{{user.name}}: {{format_date createdAt}}</p>
+    <p>{{user.name}}: {{createdAt}}</p>
 
     <form class="addReview-form" action="/review/{{id}}" method="post">
         <input type="id" name="isbn" placeholder={{isbn}} value={{isbn}}>
@@ -10,9 +10,9 @@
     </form> 
     <p>
         <a href="/" class="btn btn-primary">More Posts</a>
-        <a href="/" class="btn btn-primary">New Post</a>
+        <a href="/" class="btn btn-primary">DELETE</a>
     </p>
 </div>
 
 
-<script src="js/review.js"></script>
+<script src="/js/review.js"></script>

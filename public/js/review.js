@@ -4,13 +4,11 @@ const addReviewHandlebar = async(event) => {
     const review_id = document.querySelector('input[name="isbn"]').value;
     const review_content = document.querySelector('input[name="text"]').value;
 
-
-    test('Checks for null values', async () => {
-        await expect(review_content.validate()).rejects.toThrow('notNull');
-      });
       
       if (review_content === "") {
           alert("Enter valid input");
+      }else if(review_content < 30){
+        alert("Enter minimun 30 characters.");
       }else {
         return;
       }
@@ -27,7 +25,7 @@ const addReviewHandlebar = async(event) => {
       });
       
       if (response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/review/');
       } else {
         alert(response.statusText);
       }

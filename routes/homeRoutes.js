@@ -54,11 +54,10 @@ router.get("/review-book/:isbn", async (req, res) => {
   }
 });
 
-router.get("/review/:id", async (req, res) => {
+router.get("/review/:isbn", async (req, res) => {
   try {
-    const reviewData = await Review.findByPk(req.params.id, {
-      include: [{ model: User }],
-    });
+    const reviewData = await Review.findOne({ where: { isbn: req.body.isbn}} );
+    console.log(reviewData);
     const review = reviewData.get({ plain: true });
 
     res.render("review", {
@@ -66,12 +65,13 @@ router.get("/review/:id", async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get("/profile", withAuth, async (req, res) => {
-  console.log("Profile:", req.session.user_id);
+router.get("/review", withAuth, async (req, res) => {
+  console.log("Review:", req.session.user_id);
   try {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
@@ -80,7 +80,7 @@ router.get("/profile", withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render("profile", {
+    res.render("review", {
       ...user,
       logged_in: true,
     });

@@ -12,7 +12,7 @@ Review.init(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(128),
       allowNull: false,
     },
     isbn: {
