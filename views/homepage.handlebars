@@ -20,13 +20,13 @@
 <div class="row mb-4 post">
     <div class="">
         <h2>
-            <a href="/review/{{review.id}}">{{review.title}}</a>
+            <a href="/review/{{isbn}}">{{review.title}}</a>
         </h2>
-        <p>Created by {{review.user.name}} on {{format_date post.createdAt}}</p>
+        <p>Created by {{review.user.name}} on {{createdAt}}</p>
     </div>
     <div class="">
         <p>
-            {{review.body}}
+            {{review.review}}
         </p>
     </div>
 </div>

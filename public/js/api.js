@@ -32,7 +32,9 @@ const clearSearchResults = () => {
 };
 
 const renderBookResultCard = (book, index) => {
-  const html = `<a href="/review/${book.isbn}">
+  //const html = `<a href="/review/${book.isbn}, ${book.title}">
+  const html = `<a href="/review?isbn=${book.isbn}&&title=${book.title}&&cover=${book.coverImage}">
+  
   <div class="book-search-card">
         <div class="book-search-info">
             <h2>(${book.title})</h2>
@@ -55,9 +57,10 @@ const renderBookResultCard = (book, index) => {
 
 const renderBookResults = (data) => {
   data.forEach((bookItem, index) => {
+    console.log(bookItem);
     const book = {
       title: bookItem.title,
-      author: bookItem.author_name[0],
+      author: bookItem.author_name,
       published: bookItem.first_publish_year,
       isbn: bookItem.isbn[0],
       coverImage: bookItem.cover_i,

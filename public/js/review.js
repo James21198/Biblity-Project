@@ -1,35 +1,33 @@
+
 const addReviewHandlebar = async(event) => {
     event.preventDefault();
 
-    const review_id = document.querySelector('input[name="isbn"]').value;
-    const review_content = document.querySelector('input[name="text"]').value;
+    const isbn = document.querySelector('input[name="isbn"]').value;
+    console.log(isbn);
+    const title = document.querySelector("#book_title").innerHTML;
+    console.log(title);
+    const review = document.querySelector("#review_text").value;
+    console.log(review);
 
       
-      if (review_content === "") {
-          alert("Enter valid input");
-      }else if(review_content < 30){
-        alert("Enter minimun 30 characters.");
-      }else {
-        return;
-      }
-
-   
-    const response = await fetch(`/api/review/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-           body
-        }),
-        headers: {
-            'Content-Type': 'application/json'
+        if (isbn && review) {
+          console.log('Review handlers');
+          const response = await fetch('/api/review', {
+            method: 'POST',
+            body: JSON.stringify({ title, isbn, review }),
+            headers: { 'Content-Type': 'application/json' },
+          });
+          console.log(response);
+           if (response.ok) {
+            //document.location.replace('/dashboard');
+            
+          } else {
+            console.log('Failed to create post');
+          }
         }
-      });
-      
-      if (response.ok) {
-        document.location.replace('/review/');
-      } else {
-        alert(response.statusText);
-      }
-    
-}
+      };
+
+
+
 
 document.querySelector('.addReview-form').addEventListener('submit', addReviewHandlebar);

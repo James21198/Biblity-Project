@@ -1,17 +1,32 @@
 <div class="text-center">
     <h2>{{isbn}}</h2>
-    <p>{{body}}</p>
+    <p>{{title}}</p>
+    <img src={{cover_img}}>
     <p>{{user.name}}: {{createdAt}}</p>
 
-    <form class="addReview-form" action="/review/{{id}}" method="post">
+    <form class="addReview-form" action="/" method="post">
         <input type="id" name="isbn" placeholder={{isbn}} value={{isbn}}>
-        <textarea name="text" placeholder="Your Review"></textarea>
+        <p id="book_title" display="hidden">{{title}}</p>
+        <textarea  id="review_text" name="text" placeholder="Your Review" value={{review}}></textarea>
         <button class="btn btn-danger" type="submit">Post review</button>
     </form> 
     <p>
         <a href="/" class="btn btn-primary">More Posts</a>
         <a href="/" class="btn btn-primary">DELETE</a>
     </p>
+
+    <div class="row mb-4 post">
+    <div class="">
+        <p>Created by {{review.user.name}} on {{createdAt}}</p>
+    </div>
+    <div class="">
+        {{#each reviews as |review|}}
+        <p>
+            {{review}}
+        </p>
+        {{/each}}
+    </div>
+</div>
 </div>
 
 
