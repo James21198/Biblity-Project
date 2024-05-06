@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Review } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/',  async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     console.log("Inside Post");
     console.log(req.body);

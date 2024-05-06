@@ -6,24 +6,27 @@
 
     <form class="addReview-form" action="/" method="post">
         <input type="id" name="isbn" placeholder={{isbn}} value={{isbn}}>
-        <p id="book_title" display="hidden">{{title}}</p>
+        <input type="hidden" id="book_title" name="book_title" value={{title}}>
+        <input type="hidden" id="book-cover" value={{cover_img}}>
         <textarea  id="review_text" name="text" placeholder="Your Review" value={{review}}></textarea>
         <button class="btn btn-danger" type="submit">Post review</button>
     </form> 
     <p>
         <a href="/" class="btn btn-primary">More Posts</a>
-        <a href="/" class="btn btn-primary">DELETE</a>
+       
     </p>
 
     <div class="row mb-4 post">
     <div class="">
-        <p>Created by {{review.user.name}} on {{createdAt}}</p>
+      <!---  <p>Created by {{review.user.name}} on {{createdAt}}</p>-->
     </div>
     <div class="">
         {{#each reviews as |review|}}
         <p>
-            {{review}}
+            {{review.review}}
+            <p>Created by {{review.reviewCreatedBy}} on {{format_date review.reviewCreatedAt}}</p>
         </p>
+         <a href="/" class="btn btn-primary">DELETE</a>
         {{/each}}
     </div>
 </div>

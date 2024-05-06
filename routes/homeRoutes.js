@@ -81,7 +81,18 @@ router.get("/review/", async (req, res) => {
     console.log("sssss" + JSON.stringify(reviews));
 
     const reviewList = [];
-    reviews.forEach(function(review){reviewList.push(review.review)});
+    let reviewObj = [];
+
+    //reviews.forEach(function(review){reviewList.push(review.review)});
+    reviews.forEach(function(review){
+      console.log(review);
+      reviewObj={
+        review: review.review,
+        reviewCreatedBy: review.user.name,
+        reviewCreatedAt: review.date_created
+      };
+      reviewList.push(reviewObj);
+    });
     const reviewIsbn = {
       isbn: isbn,
       title: title,
@@ -134,6 +145,7 @@ router.get("/review/", async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
+    console.log('I am logged in');
     res.redirect("/review");
     return;
   }

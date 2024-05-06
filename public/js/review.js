@@ -3,11 +3,13 @@ const addReviewHandlebar = async(event) => {
     event.preventDefault();
 
     const isbn = document.querySelector('input[name="isbn"]').value;
-    console.log(isbn);
-    const title = document.querySelector("#book_title").innerHTML;
-    console.log(title);
+    console.log("Here I am" + isbn);
+    const title = document.querySelector('input[name="book_title"]').value;
+    console.log("Here I am" + title);
+    const cover_img = document.querySelector('#book-cover').value;
+    console.log("Here I am" + cover_img);
     const review = document.querySelector("#review_text").value;
-    console.log(review);
+
 
       
         if (isbn && review) {
@@ -19,12 +21,13 @@ const addReviewHandlebar = async(event) => {
           });
           console.log(response);
            if (response.ok) {
-            //document.location.replace('/dashboard');
+            response.redirect('/review/?isbn='+isbn+'&&title='+title+'&&cover='+cover_img);
             
           } else {
             console.log('Failed to create post');
           }
         }
+
       };
 
 
