@@ -1,0 +1,29 @@
+* {
+    color: rgb(214, 81, 81);
+}
+
+h1 {
+    text-align: center;
+    padding: 0px;
+    margin: 5px;
+}
+
+body {
+    background-image: url(/logo/download.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
+
+nav {
+    text-align: end;
+    font-size: 20px;
+}
+

@@ -13,13 +13,13 @@
     <div class="flex-column jusify-space-around">
         <header class="display-flex justify-space-between align-center p-2">
             <h1>
-                <span role="img" aria-label="money"></span>
-                <a href="/">Biblity</a>
+                <img src ="/logo/image.png" width = "200px">
             </h1>
             <nav>
                 {{#if logged_in}}
                 <a href="/">Home</a>
-    
+                <a href="/profile">Profile</a>
+
                 <button class="no-button" id="logout">logout</button>
                 {{else}}
                 <a href="/login">login</a>
