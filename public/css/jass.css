@@ -108,9 +108,15 @@ a{
 .addReview-form{
     margin: 10px;
     padding: 5px;
-    height: 25px;
     align-items: center;
+    
 }
 
+#pTitle{
+    display: none;
+}
 
+#pDelTitle{
+    display: none;
+}
 

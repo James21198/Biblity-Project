@@ -2,14 +2,14 @@
   <h2>{{isbn}}</h2>
   <p>{{title}}</p>
   <img src={{coverImgUrl}} />
-  <p>{{user.name}}: {{createdAt}}</p>
+  <p>{{user.name}} {{createdAt}}</p>
 
   <form class="addReview-form" action="/" method="post">
     <input type="id" name="isbn" placeholder={{isbn}} value={{isbn}} />
    <!-- <input type="hidden" id="book_title" name="book_title" value={{title}} />-->
     <p id="pTitle">{{title}}</p>
     <input type="hidden" id="book-cover" value={{coverImg}} />
-    <textarea
+    <input type="review"
       id="review_text"
       name="text"
       placeholder="Your Review"
