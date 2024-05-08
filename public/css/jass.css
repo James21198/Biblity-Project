@@ -1,4 +1,5 @@
-* {
+
+*{
     color: rgb(214, 81, 81);
 }
 
@@ -9,9 +10,11 @@ h1 {
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-image: url(/logo/download.jpg);
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 div {
@@ -25,5 +28,30 @@ footer {
 nav {
     text-align: end;
     font-size: 20px;
+}
+
+.no-button{
+    border-radius: 15px;
+    border-color: rgb(214, 81, 81);
+}
+
+.btn-primary{
+    border-radius: 15px;
+    border-color: rgb(214, 81, 81);
+}
+
+a{
+    font-size: 25px;
+    color: rgb(214, 81, 81);
+    text-decoration: none;
+}
+
+.form-group{
+    margin: 2px;
+    color: rgb(214, 81, 81);
+}
+
+.delete-btn{
+    border-radius: 15px;
 }
 
