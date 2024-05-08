@@ -1,15 +1,22 @@
 # Biblity-Project
 
-## Planner
-1.Create the backend via week 14 challenge/mini-project
-2.Find a third party API for books
-3.Check backend via postman
-4.Creating the structure via handlebars templates
-5.Test and try to break the webpage
+## Description 
 
-fetch(`https://openlibrary.org/search.json?q=${searchText}`)
-        .then(response => response.json())
-        .then(data => displayResults(data.docs));
+Biblity is not just a book finder — it's your personalized literary companion! With Biblity, you can effortlessly search for any book your heart desires. Simply type in the title or author and watch as a treasure trove of books unfolds before your eyes. But Biblity doesn't stop there. We understand that discovering the perfect book is only half the journey. That's why we've incorporated a review feature, allowing you to share your thoughts and insights on any book you've read. 
 
-http://covers.openlibrary.org/b/id/$%7Bbook.cover_i%7D-M.jpg 
+
+## Technologies Used 
+
+In our project, we used node.js and express.js to create a restful API. Handlebars.js were also used to create dynamic web pages. 
+Programming languages used to develop this project is HTML, Javascript and SQL.
+PostgreSQL and sequelize were used to manage our data effectively. 
+Our API can fetch and add data with GET and POST routes.
+
+
+## Screenshots 
+
+
+
+## Link to Deployed application
+
 
