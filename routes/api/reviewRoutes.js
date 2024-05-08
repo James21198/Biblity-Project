@@ -13,13 +13,14 @@ router.post('/', withAuth, async (req, res) => {
 
     res.status(200).json(newReview);
   } catch (err) {
-    //console.log(err);
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id',  async (req, res) => {
   try {
+    console.log('delete' + req.params.id);
     const reviewData = await Review.destroy({
       where: {
         id: req.params.id,

@@ -1,32 +1,45 @@
 <div class="text-center">
-    <h2>{{isbn}}</h2>
-    <p>{{title}}</p>
-    <img src={{cover_img}}>
-    <p>{{user.name}}: {{createdAt}}</p>
+  <h2>{{isbn}}</h2>
+  <p>{{title}}</p>
+  <img src={{coverImgUrl}} />
+  <p>{{user.name}}: {{createdAt}}</p>
 
-    <form class="addReview-form" action="/" method="post">
-        <input type="id" name="isbn" placeholder={{isbn}} value={{isbn}}>
-        <input type="hidden" id="book_title" name="book_title" value={{title}}>
-        <input type="hidden" id="book-cover" value={{cover_img}}>
-        <textarea  id="review_text" name="text" placeholder="Your Review" value={{review}}></textarea>
-        <button class="btn btn-danger" type="submit">Post review</button>
-    </form> 
+  <form class="addReview-form" action="/" method="post">
+    <input type="id" name="isbn" placeholder={{isbn}} value={{isbn}} />
+    <input type="hidden" id="book_title" name="book_title" value={{title}} />
+    <input type="hidden" id="book-cover" value={{coverImg}} />
+    <textarea
+      id="review_text"
+      name="text"
+      placeholder="Your Review"
+      value={{review}}
+    ></textarea>
+    <button class="btn btn-danger" type="submit">Post review</button>
+  </form>
 
-    <div class="row mb-4 post">
+  <div class="row mb-4 post">
     <div class="">
-      <!---  <p>Created by {{review.user.name}} on {{createdAt}}</p>-->
     </div>
     <div class="">
-        {{#each reviews as |review|}}
-        <p>
+      {{#each reviews as |review|}}
+        <form class="deleteReview-form">
+            <input type="hidden" name="isbn" value={{review.isbn}} />
+            <input type="hidden" name="book_title" value={{review.title}} />
+            <input type="hidden" name="book_cover" value={{review.coverImg}} />
+          <p>
+            <input type="hidden" id="review_id" value={{review.id}} />
             {{review.review}}
-            <p>Created by {{review.reviewCreatedBy}} on {{format_date review.reviewCreatedAt}}</p>
-        </p>
-         <a href="/" class="btn btn-primary">DELETE</a>
-        {{/each}}
-    </div>
-</div>
-</div>
+            <p>Created by
+              {{review.reviewCreatedBy}}
+              on
+              {{format_date review.reviewCreatedAt}}</p>
+          </p>
+          <button  id={{review.id}} type="submit" class="delete-btn">DELETE</button>
+        </form>
+      {{/each}}
 
+    </div>
+  </div>
+</div>
 
 <script src="/js/review.js"></script>

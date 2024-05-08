@@ -57,12 +57,16 @@ const renderBookResultCard = (book, index) => {
 
 const renderBookResults = (data) => {
   data.forEach((bookItem, index) => {
-    console.log(bookItem);
+    let bookIsbn = [];
+    if(undefined != bookItem.isbn && bookItem.isbn.length > 0){
+      bookIsbn = bookItem.isbn[0];
+    }
+
     const book = {
       title: bookItem.title,
       author: bookItem.author_name,
       published: bookItem.first_publish_year,
-      isbn: bookItem.isbn[0],
+      isbn: bookIsbn,
       coverImage: bookItem.cover_i,
     };
 
