@@ -5,7 +5,7 @@ const addReviewHandlebar = async (event) => {
   const pTitle = document.querySelector("#pTitle").innerHTML;
   const cover_img = document.querySelector("#book-cover").value;
   const review = document.querySelector("#review_text").value;
-
+  console.log(pTitle);
   if (isbn && review) {
     const response = await fetch("/api/review", {
       method: "POST",
