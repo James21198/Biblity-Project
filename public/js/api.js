@@ -32,7 +32,6 @@ const clearSearchResults = () => {
 };
 
 const renderBookResultCard = (book, index) => {
-  //const html = `<a href="/review/${book.isbn}, ${book.title}">
   const html = `<a href="/review?isbn=${book.isbn}&&title=${book.title}&&cover=${book.coverImage}">
   
   <div class="book-search-card">

@@ -4,7 +4,7 @@ const addReviewHandlebar = async (event) => {
   const title = document.querySelector("#pTitle").innerHTML;
   const cover_img = document.querySelector("#book-cover").value;
   const review = document.querySelector("#review_text").value;
-  console.log(title);
+  
   if (isbn && review) {
     const response = await fetch("/api/review", {
       method: "POST",
@@ -22,7 +22,6 @@ const deleteHandlerbar = async (event) => {
   const isbn = document.querySelector('input[name="isbn"]').value;
   const pTitle = document.querySelector("#pDelTitle").innerHTML;
   const cover_img = document.querySelector('input[name="book_cover"]').value;
-  console.log("Delete me");
   const response = await fetch("/api/review/" + id, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },

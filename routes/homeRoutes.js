@@ -15,7 +15,6 @@ router.get("/", withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    console.log("Error", err);
     res.status(500).json(err);
   }
 });
@@ -96,13 +95,11 @@ router.get("/review/", async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    console.log("I am logged in");
     res.redirect("/review");
     return;
   }
