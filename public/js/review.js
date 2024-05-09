@@ -1,7 +1,7 @@
 const addReviewHandlebar = async (event) => {
   event.preventDefault();
   const isbn = document.querySelector('input[name="isbn"]').value;
-  const title = document.querySelector('input[name="book_title"]').value;
+  const title = document.querySelector("#pTitle").innerHTML;
   const cover_img = document.querySelector("#book-cover").value;
   const review = document.querySelector("#review_text").value;
   console.log(title);
@@ -12,10 +12,7 @@ const addReviewHandlebar = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      alert('Post posted');
       document.location.replace('review?isbn='+isbn+'&&title='+title+'&&cover='+cover_img);
-    } else {
-      console.log("Failed to create post");
     }
   }
 };
@@ -23,7 +20,7 @@ const addReviewHandlebar = async (event) => {
 const deleteHandlerbar = async (event) => {
   const id = document.querySelector("#review_id").value;
   const isbn = document.querySelector('input[name="isbn"]').value;
-  const title = document.querySelector('input[name="book_title"]').value;
+  const pTitle = document.querySelector("#pDelTitle").innerHTML;
   const cover_img = document.querySelector('input[name="book_cover"]').value;
   console.log("Delete me");
   const response = await fetch("/api/review/" + id, {
@@ -31,10 +28,7 @@ const deleteHandlerbar = async (event) => {
     headers: { "Content-Type": "application/json" },
   });
   if (response.ok) {
-    alert('Post Deleted');
-    document.location.replace('review?isbn='+isbn+'&&title='+title+'&&cover='+cover_img);
-  } else {
-    console.log("Failed to delete post");
+    document.location.replace('review?isbn='+isbn+'&&title='+pTitle+'&&cover='+cover_img);
   }
 };
 
