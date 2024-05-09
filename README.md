@@ -15,6 +15,11 @@ Our API can fetch and add data with GET and POST routes.
 
 ## Screenshots 
 
+![alt text](/Login-Page.png)
+
+![alt text](/HomePage.png)
+
+![alt text](/ReviewPage.png)
 
 
 ## Link to Deployed application
